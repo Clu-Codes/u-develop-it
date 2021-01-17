@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS parties;
 DROP TABLE IF EXISTS candidates;
+DROP TABLE IF EXISTS voters;
 
 CREATE TABLE parties (
     id INTEGER PRIMARY KEY,
@@ -15,4 +16,12 @@ CREATE TABLE candidates (
     party_id INTEGER UNSIGNED,
     -- sets the foreign key to the party id, referencing the id of the parties table, and if a party is deleted its value is set to null 
     CONSTRAINT fk_party FOREIGN KEY (party_id) REFERENCES parties(id) ON DELETE SET NULL
+);
+
+CREATE TABLE voters (
+    id INTEGER PRIMARY KEY,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    email VARCHAR(50) NOT NUll,
+    captured_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
